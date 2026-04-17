@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE users SET name='$name', email='$email', role='$role', status='$status' WHERE id=$id";
 
     if (mysqli_query($conn, $sql)) {
-        header("Location: index.php");
+        header("Location: index.php?msg=User+Updated+Successfully");
     } else {
         echo "Error: " . mysqli_error($conn);
     }

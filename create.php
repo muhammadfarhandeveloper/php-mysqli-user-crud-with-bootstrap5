@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO users (name, email, password, role, status) VALUES ('$name', '$email', '$password', '$role', '$status')";
 
     if (mysqli_query($conn, $sql)) {
-        header("Location: index.php");
+        header("Location: index.php?msg=User+Created+Successfully");
     } else {
         echo "Error: " . mysqli_error($conn);
     }
