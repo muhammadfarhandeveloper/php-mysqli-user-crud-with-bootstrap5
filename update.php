@@ -37,32 +37,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col-md-8">
 
 
-
-                <form method="POST">
-                    <div class="mb-3">
-                        <label>Name</label>
-                        <input type="text" name="name" value="<?= $user['name']; ?>" class="form-control" required>
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form method="POST">
+                            <div class="mb-3">
+                                <label>Name</label>
+                                <input type="text" name="name" value="<?= $user['name']; ?>" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Email</label>
+                                <input type="email" name="email" value="<?= $user['email']; ?>" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Role</label>
+                                <select name="role" class="form-control">
+                                    <option value="user" <?= $user['role'] == 'user' ? 'selected' : ''; ?>>User</option>
+                                    <option value="admin" <?= $user['role'] == 'admin' ? 'selected' : ''; ?>>Admin</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label>Status</label>
+                                <select name="status" class="form-control">
+                                    <option value="1" <?= $user['status'] ? 'selected' : ''; ?>>Active</option>
+                                    <option value="0" <?= !$user['status'] ? 'selected' : ''; ?>>Inactive</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-success">Update User</button>
+                        </form>
                     </div>
-                    <div class="mb-3">
-                        <label>Email</label>
-                        <input type="email" name="email" value="<?= $user['email']; ?>" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label>Role</label>
-                        <select name="role" class="form-control">
-                            <option value="user" <?= $user['role'] == 'user' ? 'selected' : ''; ?>>User</option>
-                            <option value="admin" <?= $user['role'] == 'admin' ? 'selected' : ''; ?>>Admin</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label>Status</label>
-                        <select name="status" class="form-control">
-                            <option value="1" <?= $user['status'] ? 'selected' : ''; ?>>Active</option>
-                            <option value="0" <?= !$user['status'] ? 'selected' : ''; ?>>Inactive</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-warning">Update User</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+
 <?php
 include 'db.php';
 
@@ -35,7 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <form method="POST">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form method="POST">
                     <div class="mb-3">
                         <label>Name</label>
                         <input type="text" name="name" class="form-control" required>
@@ -65,6 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button type="submit" class="btn btn-success">Add User</button>
                     <a href="index.php" class="btn btn-secondary">Back</a>
                 </form>
+                    </div>
+                </div>
 
 
             </div>

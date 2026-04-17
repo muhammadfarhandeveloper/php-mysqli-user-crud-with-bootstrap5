@@ -63,6 +63,11 @@ $result = mysqli_query($conn, $sql);
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+
+                            if(mysqli_num_rows($result) > 0){
+
+                                ?>
                         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                             <tr>
 
@@ -81,7 +86,20 @@ $result = mysqli_query($conn, $sql);
                                     <a href="delete.php?id=<?= $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                                 </td>
                             </tr>
-                        <?php } ?>
+                        <?php } 
+                        
+                                }
+                                else{
+                            ?>
+
+                            <tr class="text-center">
+                                <th colspan="7">Record Not Found !!</th>
+                            </tr>
+
+<?php
+
+                                }
+                        ?>
                     </tbody>
                 </table>
 
