@@ -25,7 +25,6 @@ $result = mysqli_query($conn, $sql);
 <body>
 
 
-
     <div class="container mt-5">
         <h2 class="text-center mt-5 mb-4">Users CRUD with PHP & MYSQL</h2>
         <div class="row justify-content-between">
@@ -49,8 +48,20 @@ $result = mysqli_query($conn, $sql);
         <div class="row justify-content-center">
             <div class="col-md-12">
 
+            <?php if (isset($_GET['msg1'])) { ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Alert!</strong> <?= $_GET['msg1'] ?? '' ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php } ?>
+            <?php if (isset($_GET['msg'])) { ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success</strong> <?= $_GET['msg'] ?? '' ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php } ?>
+            <table class="table table-bordered mt-4">
 
-                <table class="table table-bordered mt-4">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -65,40 +76,38 @@ $result = mysqli_query($conn, $sql);
                     <tbody>
                         <?php
 
-                            if(mysqli_num_rows($result) > 0){
+                        if (mysqli_num_rows($result) > 0) {
 
-                                ?>
-                        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                            <tr>
+                        ?>
+                            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                <tr>
 
-                                <!-- <?= "..." ?>  -->
-                                <!-- This is a shorthand for  -->
-                                <!-- <?php echo "..."; ?>,  -->
+                                    <!-- <?= "..." ?>  -->
+                                    <!-- This is a shorthand for  -->
+                                    <!-- <?php echo "..."; ?>,  -->
 
-                                <td><?= $row['id']; ?></td>
-                                <td><?= $row['name']; ?></td>
-                                <td><?= $row['email']; ?></td>
-                                <td><?= $row['role']; ?></td>
-                                <td><?= $row['status'] ? 'Active' : 'Inactive'; ?></td>
-                                <td><?= $row['created_at']; ?></td>
-                                <td>
-                                    <a href="update.php?id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="delete.php?id=<?= $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
-                                </td>
-                            </tr>
-                        <?php } 
-                        
-                                }
-                                else{
+                                    <td><?= $row['id']; ?></td>
+                                    <td><?= $row['name']; ?></td>
+                                    <td><?= $row['email']; ?></td>
+                                    <td><?= $row['role']; ?></td>
+                                    <td><?= $row['status'] ? 'Active' : 'Inactive'; ?></td>
+                                    <td><?= $row['created_at']; ?></td>
+                                    <td>
+                                        <a href="update.php?id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="delete.php?id=<?= $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                                    </td>
+                                </tr>
+                            <?php }
+                        } else {
                             ?>
 
                             <tr class="text-center">
                                 <th colspan="7">Record Not Found !!</th>
                             </tr>
 
-<?php
+                        <?php
 
-                                }
+                        }
                         ?>
                     </tbody>
                 </table>
@@ -106,7 +115,7 @@ $result = mysqli_query($conn, $sql);
             </div>
         </div>
     </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 
 </body>
