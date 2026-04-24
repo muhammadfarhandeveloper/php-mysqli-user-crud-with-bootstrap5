@@ -1,5 +1,17 @@
 <?php
 include 'db.php';
+session_start();
+
+if(!isset($_SESSION['user'])){
+    header("Location: login.php");
+    exit();
+}
+
+if($_SESSION['user']['role'] != 'admin'){
+    header("Location: index.php");
+    exit();
+}
+
 $id = $_GET['id'];
 $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM users WHERE id=$id"));
 

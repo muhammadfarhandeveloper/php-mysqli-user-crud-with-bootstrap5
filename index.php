@@ -1,5 +1,11 @@
 <?php
 include 'db.php';
+session_start();
+
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
 
 // Search Query
 $search = "";
@@ -27,9 +33,13 @@ $result = mysqli_query($conn, $sql);
 
     <div class="container mt-5">
         <h2 class="text-center mt-5 mb-4">Users CRUD with PHP & MYSQL</h2>
+        <h2 class="text-center mb-4">Welcome, <?= $_SESSION['user']['name']; ?></h2>
         <div class="row justify-content-between">
             <div class="col-md-4">
-                <a href="create.php" class="btn btn-success mb-3">Add New User</a>
+                <a href="logout.php" class="btn btn-danger mb-3">Logout</a>
+                <?php if ($_SESSION['user']['role'] == 'admin') { ?>
+                    <a href="create.php" class="btn btn-success mb-3">Add New User</a>
+                <?php } ?>
             </div>
             <div class="col-md-4">
                 <form method="GET" class="mb-3">
@@ -48,19 +58,19 @@ $result = mysqli_query($conn, $sql);
         <div class="row justify-content-center">
             <div class="col-md-12">
 
-            <?php if (isset($_GET['msg1'])) { ?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Alert!</strong> <?= $_GET['msg1'] ?? '' ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php } ?>
-            <?php if (isset($_GET['msg'])) { ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Success</strong> <?= $_GET['msg'] ?? '' ?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            <?php } ?>
-            <table class="table table-bordered mt-4">
+                <?php if (isset($_GET['msg1'])) { ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Alert!</strong> <?= $_GET['msg1'] ?? '' ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php } ?>
+                <?php if (isset($_GET['msg'])) { ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Success</strong> <?= $_GET['msg'] ?? '' ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php } ?>
+                <table class="table table-bordered mt-4">
 
                     <thead>
                         <tr>
@@ -70,7 +80,9 @@ $result = mysqli_query($conn, $sql);
                             <th>Role</th>
                             <th>Status</th>
                             <th>Created At</th>
-                            <th>Action</th>
+                            <?php if ($_SESSION['user']['role'] == 'admin') { ?>
+                                <th>Action</th>
+                            <?php } ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -92,10 +104,12 @@ $result = mysqli_query($conn, $sql);
                                     <td><?= $row['role']; ?></td>
                                     <td><?= $row['status'] ? 'Active' : 'Inactive'; ?></td>
                                     <td><?= $row['created_at']; ?></td>
-                                    <td>
-                                        <a href="update.php?id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="delete.php?id=<?= $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
-                                    </td>
+                                    <?php if ($_SESSION['user']['role'] == 'admin') { ?>
+                                        <td>
+                                            <a href="update.php?id=<?= $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="delete.php?id=<?= $row['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                                        </td>
+                                    <?php } ?>
                                 </tr>
                             <?php }
                         } else {
@@ -115,7 +129,7 @@ $result = mysqli_query($conn, $sql);
             </div>
         </div>
     </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 
 </body>
