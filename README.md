@@ -6,19 +6,19 @@ This application allows users to **manage user records**, including **search fun
 # Screenshots
 👥 Users List
 <p align="center">
- <img src="screenshots/image1.PNG" width="48%" alt="Users List">  </p>
+ <img src="screenshots/image1.PNG" width="100%" alt="Users List">  </p>
 
 ➕ Add New User
 <p align="center">
- <img src="screenshots/image2.PNG" width="48%" alt="Users Add">  </p>
+ <img src="screenshots/image2.PNG" width="100%" alt="Add New User">  </p>
 
 ✏️ Edit User
 <p align="center">
- <img src="screenshots/image3.PNG" width="48%" alt="Users Add">  </p>
+ <img src="screenshots/image3.PNG" width="100%" alt="Edit User">  </p>
 
 🔍 Search Users
 <p align="center">
- <img src="screenshots/image4.PNG" width="48%" alt="Users Add">  </p>
+ <img src="screenshots/image4.PNG" width="100%" alt="Search Users">  </p>
 
 ---
 
