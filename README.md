@@ -3,6 +3,23 @@
 A simple **CRUD (Create, Read, Update, Delete) application** built using **PHP (MySQLi)** and **Bootstrap 5.3**.  
 This application allows users to **manage user records**, including **search functionality**.
 
+# Screenshots
+👥 Users List
+<p align="center">
+ <img src="screenshots/image1.PNG" width="48%" alt="Users List">  </p>
+
+➕ Add New User
+<p align="center">
+ <img src="screenshots/image2.PNG" width="48%" alt="Users Add">  </p>
+
+✏️ Edit User
+<p align="center">
+ <img src="screenshots/image3.PNG" width="48%" alt="Users Add">  </p>
+
+🔍 Search Users
+<p align="center">
+ <img src="screenshots/image4.PNG" width="48%" alt="Users Add">  </p>
+
 ---
 
 ## 🌟 Features
