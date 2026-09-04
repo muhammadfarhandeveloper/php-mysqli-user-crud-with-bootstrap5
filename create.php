@@ -27,16 +27,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add User</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"/>
+
 </head>
 
 <body>
-
-    <h2 class="text-center mt-5 mb-3">Add New User</h2>
-    <div class="container mt-5">
+     <div class="container mt-2">
+        <h2 class="text-center py-4">Users CRUD with PHP & MYSQL</h2>
+    </div>
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
-                <div class="card shadow-sm">
+                <div class="card shadow-sm my-4">
+                    <h2 class="text-center pt-3">Add New User</h2>
                     <div class="card-body">
                         <form method="POST">
                     <div class="mb-3">
@@ -53,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <div class="mb-3">
                         <label>Role</label>
-                        <select name="role" class="form-control">
+                        <select name="role" class="form-select">
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
                         </select>

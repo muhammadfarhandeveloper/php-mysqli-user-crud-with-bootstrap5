@@ -20,16 +20,20 @@ $result = mysqli_query($conn, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 
-<body>
+<body>  
 
 
     <div class="container mt-5">
-        <h2 class="text-center mt-5 mb-4">Users CRUD with PHP & MYSQL</h2>
-        <div class="row justify-content-between">
+        <h2 class="text-center py-4">Users CRUD with PHP & MYSQL</h2>
+    </div>
+
+    <div class="container py-4">
+          <div class="row justify-content-between">
             <div class="col-md-4">
-                <a href="create.php" class="btn btn-success mb-3">Add New User</a>
+                <a href="create.php" class="btn btn-primary mb-3">Add New User</a>
             </div>
             <div class="col-md-4">
                 <form method="GET" class="mb-3">
@@ -42,10 +46,8 @@ $result = mysqli_query($conn, $sql);
 
             </div>
         </div>
-    </div>
-
-    <div class="container mt-4">
         <div class="row justify-content-center">
+            
             <div class="col-md-12">
 
             <?php if (isset($_GET['msg1'])) { ?>
@@ -60,7 +62,7 @@ $result = mysqli_query($conn, $sql);
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <?php } ?>
-            <table class="table table-bordered mt-4">
+            <table class="table table-bordered mt-2">
 
                     <thead>
                         <tr>
